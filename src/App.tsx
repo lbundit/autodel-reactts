@@ -1,12 +1,17 @@
-import { useState } from 'react'
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import cropList from './CropDB.json'
+
+import React, { Component } from "react";
+import { CropData, CropType, getCropData } from './CropData.tsx';
+import { CropTable } from './CropTable.tsx';
+
+import cropList from './CropDB.json';
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const cropData = cropList as CropData[];
   return (
     <>
       <div>
@@ -17,22 +22,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <div>
-          { cropList.forEach( { return(<p> Test </p>) } ) }
-        </div>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <h1>Auto Delete (Vite + React)</h1>
+      <div>
+      <p>
+        { CropTable(cropData) }
       </p>
-      ffff
+      </div>
     </>
   )
 }
