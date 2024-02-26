@@ -1,30 +1,10 @@
-# React + TypeScript + Vite
+# Auto Delete (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This code provides an automatic deletion. There is a list of crops on the left column of the table. When a user clicks a crop's name in the right column, it will move to the right columns according to its category. If a user clicks on a crop's name in the two right columns, it will return to the left column, right away. Otherwise, it will wait 5 seconds before returning to the left column.
 
-Currently, two official plugins are available:
+The code was written with React + TS + Vite. The list of crops is given as a JSON file. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The automatic deletion is done as follows:
+- The CropTable function calls an async function startTimer, which runs for each selected crop.
+- The startTimer function periodically probs has returned to the left column.
+- If the selected crop has yet returned to the left column within five seconds, it will be forced to return.
